@@ -1,0 +1,33 @@
+{
+  "name": "js-validator",
+  "version": "1.0.0",
+  "description": "Javascript Validator inspired in Laravel Validator",
+  "main": "./dist/validator.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./src/app.js",
+    "build": "babel ./src/validator.js -o dist/validator.js && babel ./src/helpers/index.js -o dist/helpers/index.js && babel ./src/messages_default.js -o dist/messages_default.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blogui91/js-validator.git"
+  },
+  "keywords": [
+    "js-validator",
+    "laravel-validator",
+    "validation",
+    "vuejs"
+  ],
+  "author": "Cesar Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blogui91/js-validator/issues"
+  },
+  "homepage": "https://github.com/blogui91/js-validator#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babelify": "^7.3.0",
+    "nodemon": "^1.11.0"
+  }
+}
