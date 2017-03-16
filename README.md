@@ -3,9 +3,10 @@
 JS validator is a small library inspired in Laravel Validator, it's minimal but powerful, allowing you validating some kind of data. However, it allows you extend custom validators in easy manner!.
 
 # Instalation
-	```
-		npm install laravalidator-js
-	```
+```
+    npm install laravalidator-js
+	
+```
 
 # Example
 
