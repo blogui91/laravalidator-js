@@ -22,12 +22,12 @@ export default {
 	},
 
 	/**
-	 * Integer rule.
+	 * Numeric rule.
 	 *
 	 * @param {String} value
 	 * @return {Boolean}
 	 */
-	integer(value) {
+	numeric(value) {
 		let regexp = /^(-?[1-9]\d*|0)$/
 		return regexp.test(value);
 	},
