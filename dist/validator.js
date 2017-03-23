@@ -152,8 +152,8 @@ var Validator = function () {
 				var err = null;
 				var rule = rules[index];
 
-				if (_helpers2.default[rule] && !_helpers2.default[rule](value)) {
-					//Something like Helpers.required && !Helpers.required(value)
+				if (this.helpers[rule] && !this.helpers[rule](value)) {
+					//Something like this.helpers.required && !this.helpers.required(value)
 
 					if (typeof this.messages[attribute] == 'undefined') {
 						//There is not any specific message for this attribute

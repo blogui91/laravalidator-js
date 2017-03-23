@@ -136,7 +136,7 @@ class Validator {
 			let err = null;
 			let rule = rules[index];
 
-			if (Helpers[rule] && !Helpers[rule](value)) { //Something like Helpers.required && !Helpers.required(value)
+			if (this.helpers[rule] && !this.helpers[rule](value)) { //Something like this.helpers.required && !this.helpers.required(value)
 
 				if (typeof this.messages[attribute] == 'undefined') { //There is not any specific message for this attribute
 					err = this.getDefaultMessage(attribute, rule);
