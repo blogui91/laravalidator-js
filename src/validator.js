@@ -33,7 +33,19 @@ class Validator {
 		//Error messages container.
 		this.messages = messages;
 
-		Object.assign(Helpers, customValidators);
+		this.loadHelpers(Helpers);
+		this.extend(customValidators)
+	}
+
+
+
+	loadHelpers(helpers) {
+		this.helpers = helpers;
+	}
+
+
+	extend(validators) {
+		Object.assign(this.helpers, validators);
 	}
 
 	/**

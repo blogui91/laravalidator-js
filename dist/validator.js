@@ -51,19 +51,30 @@ var Validator = function () {
 		//Error messages container.
 		this.messages = messages;
 
-		Object.assign(_helpers2.default, customValidators);
+		this.loadHelpers(_helpers2.default);
+		this.extend(customValidators);
 	}
 
-	/**
-  * Create a new static instance.
-  *
-  * @param {Object} data required
-  * @param {Object} rules required
-  * @param {Object} messages optional
-  */
-
-
 	_createClass(Validator, [{
+		key: 'loadHelpers',
+		value: function loadHelpers(helpers) {
+			this.helpers = helpers;
+		}
+	}, {
+		key: 'extend',
+		value: function extend(validators) {
+			Object.assign(this.helpers, validators);
+		}
+
+		/**
+   * Create a new static instance.
+   *
+   * @param {Object} data required
+   * @param {Object} rules required
+   * @param {Object} messages optional
+   */
+
+	}, {
 		key: 'exec',
 
 
