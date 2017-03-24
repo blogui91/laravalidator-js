@@ -1,6 +1,6 @@
 {
   "name": "laravalidator-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Javascript Validator inspired in Laravel Validator",
   "main": "./dist/validator.js",
   "scripts": {

@@ -91,11 +91,26 @@ var Validator = function () {
 			}
 
 			for (var attr in this.rules) {
+				this.createBag(attr);
 				attr_rules = this.rules[attr].constructor == Array ? this.rules[attr] : this.rules[attr].split(',');
 				this.check(attr, attr_rules);
 			}
 
 			return this.createResponse();
+		}
+
+		/**
+   * Create an empty bag errors for each rule item.
+   *
+   * @returns {Object}
+   */
+
+	}, {
+		key: 'createBag',
+		value: function createBag(attr) {
+			if (typeof this.errors[attr] == 'undefined') {
+				this.errors[attr] = [];
+			}
 		}
 	}, {
 		key: 'createResponse',
