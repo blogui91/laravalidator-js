@@ -11,48 +11,48 @@ JS validator is a small library inspired in Laravel Validator, it's minimal but 
 # Example
 
 ```js
-	import Validator from 'laravalidator-js'
+import Validator from 'laravalidator-js'
 
-	let data = {
-		first_name: "Cesar.23@@santana.com", //Wrong
-		email: "Cesar A",
-		last_name: "",
-	};
+let data = {
+	first_name: "Cesar.23@@santana.com", //Wrong
+	email: "Cesar A",
+	last_name: "",
+};
 
-	let rules = {
-		first_name: ['email'],
-		age: ['customvalidator']
-	};
-	let messages = {
-		last_name: {
-			required: "last_name is required"
-		},
-		age: {
-			required: "Este campo es requerido , dude",
-			numeric: "Este campo debe ser numérico, dude",
-			customvalidator: "Only custom numbers dude"
-		}
-	};
-
-	let custom_validators = {
-		customvalidator(value) {
-			//enter your validation here
-			return true
-		},
-		anothervalidator(value) {
-
-		}
+let rules = {
+	first_name: ['email'],
+	age: ['customvalidator']
+};
+let messages = {
+	last_name: {
+		required: "last_name is required"
+	},
+	age: {
+		required: "Este campo es requerido , dude",
+		numeric: "Este campo debe ser numérico, dude",
+		customvalidator: "Only custom numbers dude"
 	}
+};
 
-	let validator = Validator.make(data, rules, messages, custom_validators);
+let custom_validators = {
+	customvalidator(value) {
+		//enter your validation here
+		return true
+	},
+	anothervalidator(value) {
 
-	if (validator.passes()) {
-		console.log("Congratulations!")
 	}
+}
 
-	if (validator.fails()) {
-		console.log(validator.messages)
-	}
+let validator = Validator.make(data, rules, messages, custom_validators);
+
+if (validator.passes()) {
+	console.log("Congratulations!")
+}
+
+if (validator.fails()) {
+	console.log(validator.messages)
+}
 
 ```
 
@@ -70,9 +70,9 @@ export class ClientValidator extends Validator
         super()
 
         this.rules = {
-			'fullname' : 'required',
-			'email' : 'emailSometimes',
-			'phone' : 'required',
+		'fullname' : 'required',
+		'email' : 'emailSometimes',
+		'phone' : 'required',
         }
 
         this.data = data
@@ -110,32 +110,36 @@ export class ClientValidator extends Validator
 
 Finally in your main file you can use it like this:
 
-```
-	import ClientValidator from 'validators/Client.validator'
+```js
+import ClientValidator from 'validators/Client.validator'
 
 
-	let data_to_validate = {
-		email : 'wrongemal.com',
-		phone : null,
-		fullname : 'Cesar Santana'
-	}
+let data_to_validate = {
+	email : 'wrongemal.com',
+	phone : null,
+	fullname : 'Cesar Santana'
+}
 
-	let validator = ClientValidator.make(data_to_validate);
+let validator = ClientValidator.make(data_to_validate);
 
-	if(validator.fails()){
-		console.log(validator.messages) //Show errors
-	}
+if(validator.fails()){
+	console.log(validator.messages) //Show errors
+}
 
 
 ```
 
 The variable ```validator```  returns an object with these properties:
 
-```js has() : Boolean //Verify if a specified item has error. ```
-```js first() : Array //Get the first field with error. ```
-```js get() : Array //Get a specified field with error. ```
-```js passes() : Boolean //Check if the validation does not have errors. ```
-```js fails() : Boolean // Check if validation has errors. ```
+``` has() : Boolean //Verify if a specified item has error. ```
+
+``` first() : Array //Get the first field with error. ```
+
+``` get() : Array //Get a specified field with error. ```
+
+``` passes() : Boolean //Check if the validation does not have errors. ```
+
+``` fails() : Boolean // Check if validation has errors. ```
 
 
 
