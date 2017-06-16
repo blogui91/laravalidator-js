@@ -103,25 +103,32 @@ class Validator {
 		var errs = JSON.stringify(this.errors);
 		var response = {
 			fails() {
-				return errs != '{}';
+                let keys = Object.keys(this.messages);
+                let fails = false;
+                keys.forEach(key => {
+                    if(this.messages[key].length > 0){
+                        fails = true
+                    }
+                });
+				return fails;
 			},
 			passes() {
-				return errs == '{}'
+				return !( this.fails() )
 			},
 			messages: this.errors,
 			first(attr) {
-				if (this.hasErrors(attr)) {
+				if (this.has(attr)) {
 					return this.messages[attr][0];
 				}
 				return null;
 			},
 			get(attr) {
-				if (this.hasErrors(attr)) {
+				if (this.has(attr)) {
 					return this.messages[attr];
 				}
 				return [];
 			},
-			hasErrors(attr) {
+			has(attr) {
 				if (this.messages[attr]) {
 					if (this.messages[attr].length > 0) {
 						return true;

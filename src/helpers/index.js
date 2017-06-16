@@ -6,8 +6,12 @@ export default {
 	 * @return {Boolean}
 	 */
 	empty(value) {
+		if(value != null){
+			value = value.toString()
+		}
 		return value == null || value.length == 0 || value.trim() == '';
 	},
+	
 	/**
 	 * No blank fields.
 	 *

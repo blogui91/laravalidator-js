@@ -118,26 +118,35 @@ var Validator = function () {
 			var errs = JSON.stringify(this.errors);
 			var response = {
 				fails: function fails() {
-					return errs != '{}';
+					var _this = this;
+
+					var keys = Object.keys(this.messages);
+					var fails = false;
+					keys.forEach(function (key) {
+						if (_this.messages[key].length > 0) {
+							fails = true;
+						}
+					});
+					return fails;
 				},
 				passes: function passes() {
-					return errs == '{}';
+					return !this.fails();
 				},
 
 				messages: this.errors,
 				first: function first(attr) {
-					if (this.hasErrors(attr)) {
+					if (this.has(attr)) {
 						return this.messages[attr][0];
 					}
 					return null;
 				},
 				get: function get(attr) {
-					if (this.hasErrors(attr)) {
+					if (this.has(attr)) {
 						return this.messages[attr];
 					}
 					return [];
 				},
-				hasErrors: function hasErrors(attr) {
+				has: function has(attr) {
 					if (this.messages[attr]) {
 						if (this.messages[attr].length > 0) {
 							return true;
